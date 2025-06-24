@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budgeting</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Budgeting</h1>
+    <form method="post" action="/budget">
+        <label for="food">Food Budget:</label>
+        <input type="number" id="food" name="Food" required>
+        
+        <label for="household">Household Budget:</label>
+        <input type="number" id="household" name="Household" required>
+        
+        <label for="transportation">Transportation Budget:</label>
+        <input type="number" id="transportation" name="Transportation" required>
+        
+        <label for="entertainment">Entertainment Budget:</label>
+        <input type="number" id="entertainment" name="Entertainment" required>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if over_budget_months %}
+        {{ over_budget_months|safe }}
+    {% else %}
+        <p>No budget alerts.</p>
+    {% endif %}
+    
+    <a href="/">Back to Home</a>
+</body>
+</html>
